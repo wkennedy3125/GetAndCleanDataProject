@@ -72,9 +72,9 @@ Import training sets -
 ****
 
 ****
- 1. MERGE THE TRAINING AND TEST SETS to create one data set.
+ Step 1. MERGE THE TRAINING AND TEST SETS to create one data set.
 ****
- Step 1. row bind (stack) the x (measurements) data sets
+      * Step 1. row bind (stack) the x (measurements) data sets
 ****
 
 ****
@@ -107,14 +107,14 @@ Import training sets -
 ****
 
 ****
- 2. EXTRACT ONLY MEASUREMENTS on the MEAN and STANDARD DEVIATION for 
+ Step 2. EXTRACT ONLY MEASUREMENTS on the MEAN and STANDARD DEVIATION for 
  each measurement. Only taking the triaxial data for this table.
  The magnitude values can be summarized elsewhere and added in the summary
  table.
 ****
 
 ****
- 3. USE DESCRIPTIVE ACTIVITY NAMES to name the activities in the data set.
+ Step 3. USE DESCRIPTIVE ACTIVITY NAMES to name the activities in the data set.
 ****
  Read in activity_labels.txt: a list of six activity labels
  Add headers to match on "Activity" in the full data set
@@ -126,7 +126,7 @@ Import training sets -
  The following code maps the Activity Labels to the main data set
  Adds a new column called ActivityLabel
 ****
- 4. APPROPRIATELY LABEL THE DATA set with descriptive variable names. 
+ Step 4. APPROPRIATELY LABEL THE DATA set with descriptive variable names. 
 ****
  With a manageably sized table, we can take out the column/header/variable 
  names and change them to make it easier to manipulate and tidy
@@ -184,6 +184,6 @@ Next
  - StandardDeviation: num  -0.995 -0.983 -0.906 -0.996 -0.991 ...
 
 ****
- 5. FROM DATA SET ABOVE, CREATE SECOND, INDEPENDENT TIDY DATA SET 
+ Step 5. FROM DATA SET ABOVE, CREATE SECOND, INDEPENDENT TIDY DATA SET 
  with the average of each variable for each activity and each subject.
 ****
