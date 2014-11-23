@@ -60,47 +60,39 @@ This file contains a single column to be inserted horizontally as column names t
 
 Import training sets - 
 * X_train.txt and y_train.txt
-* X contains the measured value
-* y contains the activity code (mapped to activity labels/names below in this script)
+   * X contains the measured value
+   * y contains the activity code (mapped to activity labels/names below in this script)
 
 ****
- Import test sets - descriptions same as X and y above
+Import test sets - descriptions same as X and y above
+* X_test.txt and y_test.txt
 ****
 
-****
- Import subject sets - a one column table to map subject ID
-****
+Import subject sets - a one column table to map subject ID
+* subject.txt
+
 
 ****
  Step 1. MERGE THE TRAINING AND TEST SETS to create one data set.
 ****
-* \1. row bind (stack) the x (measurements) data sets
-
- Step 2. Add column names/headers
-
- Step 3. Row bind (stack) subject sets and set column name
-
- Step 4. (Add) Column bind Subject to fulldata
-
+* Row bind (stack) the x (measurements) data sets
+* Add column names/headers
+* Row bind (stack) subject sets and set column name
+* (Add) Column bind Subject to fulldata
 * Row bind (stack) y sets and set variable name
 * Add y sets to fulldata 
-****
 
 ****
  To make things easier, use the dplyr package for 
  cleaning and tidying the rest
 ****
-
-****
- Cleanup Global Environment (only tbl_data[] will be active)
-****
+Cleanup Global Environment (only tbl_data[] will be active)
 
 ****
  Step 2. EXTRACT ONLY MEASUREMENTS on the MEAN and STANDARD DEVIATION for 
  each measurement. Only taking the triaxial data for this table.
  The magnitude values can be summarized elsewhere and added in the summary
  table.
-****
 
 ****
  Step 3. USE DESCRIPTIVE ACTIVITY NAMES to name the activities in the data set.
