@@ -8,8 +8,8 @@ This codebook lists two sets of dataset variables:
 
 These sets are based on the raw data available from:
 
-UCI Machine Learning Repository
-Center for Machine Learning and Intelligent Systems
+UCI Machine Learning Repository\n
+Center for Machine Learning and Intelligent Systems\n
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 When arranged these data are a wide formatted set with 561 variables [10299 X 561]
