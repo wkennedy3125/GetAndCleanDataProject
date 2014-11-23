@@ -22,12 +22,14 @@ Code Book for Getting and Cleaning Data Project
 * __length__: 18
 * __type__: factor / 6 levels
 * __values__:
+
 ...1. WALKING
 ...2. WALKING_UPSTAIRS
 ...3. WALKING_DOWNSTAIRS
 ...4 SITTING
 ...5. STANDING
 ...6. LAYING
+
 * __description__: The names for the activities mapping to the activity (numbers)
 
 ****
