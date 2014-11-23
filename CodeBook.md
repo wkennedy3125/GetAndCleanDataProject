@@ -7,6 +7,7 @@ This codebook lists two sets of dataset variables:
 2. A narrowly structured summary data set with 7 variables [2700 X 7]
 
 These sets are based on the raw data available from:
+
 UCI Machine Learning Repository
 Center for Machine Learning and Intelligent Systems
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
