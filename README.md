@@ -215,5 +215,5 @@ Next
 ****
 
 * Use `group_by()` to group data
-* Use `summarize()` o create a summary tidy data set
+* Use `summarize()` to create a summary tidy data set
 * Use `write.table()` to output the final file deliverable
