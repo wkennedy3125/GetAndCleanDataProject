@@ -35,7 +35,7 @@ __Code Detail__
 
 
 * IMPORT RAW FILES
-****
+
    The following files will be imported and arranged to form a single large data set: 
       - features.txt - this will be your column names
       - X_train.txt and y_train.txt - this is the training data and activity codes respectively.
