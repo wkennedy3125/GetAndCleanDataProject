@@ -216,4 +216,4 @@ Information is contained within the variable name
 This way of organizing the variables yields a wide dataset and does not conform to the “tidy data” principles proposed by Hadley Wickham  
 (http://vita.had.co.nz/papers/tidy-data.pdf)  
 
-   The R packages, dplyr and tidyr, were used to transform these variables to the above narrow data structure. This narrow structure can provide more flexible arrangement and filtering opportunities.
+   The R packages, dplyr and tidyr, were used to separate this information and transform these variables to the above narrow data structure. This narrow structure might provide more flexible arrangement and filtering opportunities.
