@@ -143,15 +143,19 @@ Pull out column names to clean them up and make it easier to manage.
 
 The variables currently look like:
 * tBodyAcc-mean()-Z
-* tBodyAcc-std()-X
+* fBodyAcc-std()-X
 
 1. Remove parentheses 
 2. Change first dash to an underscore to differentiate breaks
-3. Change leading 'f' to 'frequency.' Makes it easier to separate into other column below.
-4. Change leading ’t’ to ‘time’ 
+3. Change leading 'f' to 'frequency\.’ Makes it easier to separate into other column below.
+4. Change leading ’t’ to ‘time\.’ 
 5. Change 'mean' to 'Mean' to maintain naming convention
 6. Change 'std' to 'StandardDeviation' to maintain naming convention
 7. Replace column names with new ones
+
+The new variables now look like:
+* time.BodyAcc_Mean-Z
+* frequency.BodyAcc_StandardDeviation-X
 
 ****
 
@@ -161,11 +165,11 @@ The variables currently look like:
 
 * load tidyr package for data manipulation
 * Use the `gather()` function to move from a wide set to a tall set 
-* There are now 6 variables
+* There are now 6 variables (See structure below)
 
 ****
 
- First step to tidy data done
+ This was the first step to tidy data
 
 ****
 
@@ -209,3 +213,7 @@ Next
  with the average of each variable for each activity and each subject.
 
 ****
+
+* Use `group_by()` to group data
+* Use `summarize()` o create a summary tidy data set
+* Use `write.table()` to output the final file deliverable
