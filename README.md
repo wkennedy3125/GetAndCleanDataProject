@@ -111,8 +111,8 @@ Import training sets - X_train.txt and y_train.txt
  Read in activity_labels.txt: a list of six activity labels
  Add headers to match on "Activity" in the full data set
  Left join the tables to fill in the activity labels (dplyr package)
-****----
- Add the column names so "Activity" will match "Acitivty" in the main data set
+****
+ Add the column names so "Activity" will match "Activity" in the main data set
  "Activity" will be the key value
 
  The following code maps the Activity Labels to the main data set
@@ -122,14 +122,14 @@ Import training sets - X_train.txt and y_train.txt
 ****
  With a manageably sized table, we can take out the column/header/variable 
  names and change them to make it easier to manipulate and tidy
-****----
+****
 
  Add an observation id number column to uniquely group each row (time entry)  
  of data before gathering/melting the data to fit tidy standards
  http://vita.had.co.nz/papers/tidy-data.pdf
 
- Pull out column names to clean them up and make easier to tidy
- this removes parentheses
+ Pull out column names to clean them up and make easier to tidy. 
+ This removes parentheses
  changes first dash to an underscore to differentiate breaks
  changes leading 'f' to 'frequency.' Makes it easier to separate into other column below.
  Same idea as for 'f' above but for the time domain change 'mean' to 'Mean' to maintain naming convention
@@ -140,13 +140,13 @@ Import training sets - X_train.txt and y_train.txt
 ****
  MAKE A TIDY DATA SET
 ****
- load tidyr package for data manipulation
- This moves from a wide set to a tall set 
- There are now 6 variables
+* load tidyr package for data manipulation
+* This moves from a wide set to a tall set 
+* There are now 6 variables (See CodeBook.md)
 
-****-----
+****
  First step to tidy data done
-****-----
+****
  Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        494352 obs. of  6 variables:
  $ Subject        : int  1 1 1 1 1 1 1 1 1 1 ...
  $ Activity       : int  5 5 5 5 5 5 5 5 5 5 ...
@@ -154,11 +154,12 @@ Import training sets - X_train.txt and y_train.txt
  $ ObservationID          : int  1 2 3 4 5 6 7 8 9 10 ...
  $ MeasurementType: Factor w/ 48 levels "time.BodyAcc_Mean-X",..: 1 1 1 1 ...
  $ Measurement    : num  0.289 0.278 0.28 0.279 0.277 ...
-****-----
- Next separate and add 'Axis' (X, Y, and Z) column
- Next separate and add MeasurementType (Mean|StandardDeviation) column
- Next separate and add Domain column for time|frequency
- And finally a spread to add Mean and StandardDeviation columns for each time entry. This decreases the rows by half.
+****
+ Next 
+      * separate and add 'Axis' (X, Y, and Z) column
+      * separate and add MeasurementType (Mean|StandardDeviation) column
+      * separate and add Domain column for time|frequency
+      * And finally a spread to add Mean and StandardDeviation columns for each time entry. This decreases the rows by half.
 
 ****
  Final Raw Data Structure for tidy triaxial table
