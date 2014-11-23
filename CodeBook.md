@@ -1,10 +1,11 @@
 Code Book for Getting and Cleaning Data Project
 ====================
 
+
 ### Subject
-* length: 2
-* type: integer
-* values: 1-30
+* __length__: 2
+* __type__: integer
+* __values__: 1-30
 * description: Identification of measurement taker
 
 **** 
@@ -15,18 +16,47 @@ Code Book for Getting and Cleaning Data Project
 * __values__: 1-6
 * __description__: Activity code. A value from one to six specifying the activity
 
-— - -
+****
 
 ### ActivityLabel
-* length: 1
-* type: integer
-* values:
-WALKING
-WALKING_UPSTAIRS
-WALKING_DOWNSTAIRS
-SITTING
-STANDING
-LAYING
-* description: The names for the activities mapping to the activity (numbers)
+* __length__: 18
+* __type__: factor / 6 levels
+* __values__:
+> WALKING
+> WALKING_UPSTAIRS
+> WALKING_DOWNSTAIRS
+> SITTING
+> STANDING
+> LAYING
+* __description__: The names for the activities mapping to the activity (numbers)
 
-- - - 
+****
+
+### ObservationID
+* __length__: 5
+* __type__: integer
+* __values__: 1 - [the number of rows in the raw data set] > 10,000
+* __description__: A unique identifier for each observational row in the original data.
+
+****
+
+### Domain
+* __length__: 9
+* __type__: character
+* __values__: “time” | “frequency”
+* __description__:
+
+****
+
+### Description
+* __length__: 20
+* __type__: character
+* __values__:
+> BodyAcc : Body Acceleration
+> BodyAccJerk : Body Acceleration Jerk
+> BodyGyro : Body Gyroscopic
+> BodyGyroJerk : Body Gyroscopic Jerk
+> GravityAcc : Gravity Acceleration
+* __description__: Description of type of signal measured.
+
+****
