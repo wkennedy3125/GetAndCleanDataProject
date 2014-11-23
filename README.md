@@ -106,6 +106,8 @@ Cleanup Global Environment (only tbl_data[] will be active)
 Only taking the triaxial data for this table.
 The magnitude values can be summarized elsewhere and added in the summary table.
 
+Use the dplyr `select()` function
+
 ****
 
  Step 3. USE DESCRIPTIVE ACTIVITY NAMES to name the activities in the data set.
@@ -114,7 +116,7 @@ The magnitude values can be summarized elsewhere and added in the summary table.
 
 * Read in activity_labels.txt: a list of six activity labels
 * Add column names to match on "Activity" in the full data set
-* Left join the tables to fill in the activity labels (dplyr package)
+* Left join the tables to fill in the activity labels (dplyr package, `left_join()`)
    * Add the column names so "Activity" will match "Activity" in the main data set
    * ”Activity" will be the key value
    * Adds a new column called ActivityLabel
