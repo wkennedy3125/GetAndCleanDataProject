@@ -48,133 +48,133 @@ Step 0. IMPORT RAW FILES
          * This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and descriptives below in this script. We'll put them in to select a subset before changing them.
 
 
-#-------------------------------------------------------------------------
-# Import training sets - X_train.txt and y_train.txt
-#                        X contains the measured value
-#                        y contains the activity code (mapped to activity 
-#                          labels/names below in this script)
-#-------------------------------------------------------------------------
+****
+Import training sets - X_train.txt and y_train.txt
+                        X contains the measured value
+                        y contains the activity code (mapped to activity 
+                          labels/names below in this script)
+****
 
-#-------------------------------------------------------------------------
-# Import test sets - descriptions same as X and y above
-#-------------------------------------------------------------------------
+****
+ Import test sets - descriptions same as X and y above
+****
 
-#-------------------------------------------------------------------------
-# Import subject sets - a one column table to map subject ID
-#-------------------------------------------------------------------------
+****
+ Import subject sets - a one column table to map subject ID
+****
 
-##############################################################################
-# 1. MERGE THE TRAINING AND TEST SETS to create one data set.
-##############################################################################
-# Step 1. row bind (stack) the x (measurements) data sets
-#-------------------------------------------------------------------------
+****
+ 1. MERGE THE TRAINING AND TEST SETS to create one data set.
+****
+ Step 1. row bind (stack) the x (measurements) data sets
+****
 
-#-------------------------------------------------------------------------
-# Step 2. Add column names/headers
-#-------------------------------------------------------------------------
+****
+ Step 2. Add column names/headers
+****
 
-#-------------------------------------------------------------------------
-# Step 3. Row bind (stack) subject sets and set column name
-#-------------------------------------------------------------------------
+****
+ Step 3. Row bind (stack) subject sets and set column name
+****
 
-#-------------------------------------------------------------------------
-# Step 4. (Add) Column bind Subject to fulldata
-#-------------------------------------------------------------------------
+****
+ Step 4. (Add) Column bind Subject to fulldata
+****
 
-#-------------------------------------------------------------------------
-# Step 5. Row bind (stack) y sets and set variable name
-#-------------------------------------------------------------------------
+****
+ Step 5. Row bind (stack) y sets and set variable name
+****
 
-#-------------------------------------------------------------------------
-# Step 6. Add y sets to fulldata 
-#-------------------------------------------------------------------------
+****
+ Step 6. Add y sets to fulldata 
+****
 
-##############################################################################
-# To make things easier, use the dplyr package for 
-# cleaning and tidying the rest
-##############################################################################
+****
+ To make things easier, use the dplyr package for 
+ cleaning and tidying the rest
+****
 
-##############################################################################
-# Cleanup Global Environment (only tbl_data[] will be active)
-##############################################################################
+****
+ Cleanup Global Environment (only tbl_data[] will be active)
+****
 
-##############################################################################
-# 2. EXTRACT ONLY MEASUREMENTS on the MEAN and STANDARD DEVIATION for 
-# each measurement. Only taking the triaxial data for this table.
-# The magnitude values can be summarized elsewhere and added in the summary
-# table.
-##############################################################################
+****
+ 2. EXTRACT ONLY MEASUREMENTS on the MEAN and STANDARD DEVIATION for 
+ each measurement. Only taking the triaxial data for this table.
+ The magnitude values can be summarized elsewhere and added in the summary
+ table.
+****
 
-##############################################################################
-# 3. USE DESCRIPTIVE ACTIVITY NAMES to name the activities in the data set.
-##############################################################################
-# Read in activity_labels.txt: a list of six activity labels
-# Add headers to match on "Activity" in the full data set
-# Left join the tables to fill in the activity labels (dplyr package)
-#-----------------------------------------------------------------------------
-# Add the column names so "Activity" will match "Acitivty" in the main data set
-# "Activity" will be the key value
+****
+ 3. USE DESCRIPTIVE ACTIVITY NAMES to name the activities in the data set.
+****
+ Read in activity_labels.txt: a list of six activity labels
+ Add headers to match on "Activity" in the full data set
+ Left join the tables to fill in the activity labels (dplyr package)
+****----
+ Add the column names so "Activity" will match "Acitivty" in the main data set
+ "Activity" will be the key value
 
-# The following code maps the Activity Labels to the main data set
-# Adds a new column called ActivityLabel
-##############################################################################
-# 4. APPROPRIATELY LABEL THE DATA set with descriptive variable names. 
-##############################################################################
-# With a manageably sized table, we can take out the column/header/variable 
-# names and change them to make it easier to manipulate and tidy
-#-----------------------------------------------------------------------------
+ The following code maps the Activity Labels to the main data set
+ Adds a new column called ActivityLabel
+****
+ 4. APPROPRIATELY LABEL THE DATA set with descriptive variable names. 
+****
+ With a manageably sized table, we can take out the column/header/variable 
+ names and change them to make it easier to manipulate and tidy
+****----
 
-# Add an observation id number column to uniquely group each row (time entry)  
-# of data before gathering/melting the data to fit tidy standards
-# http://vita.had.co.nz/papers/tidy-data.pdf
+ Add an observation id number column to uniquely group each row (time entry)  
+ of data before gathering/melting the data to fit tidy standards
+ http://vita.had.co.nz/papers/tidy-data.pdf
 
-# Pull out column names to clean them up and make easier to tidy
-# this removes parentheses
-# changes first dash to an underscore to differentiate breaks
-# changes leading 'f' to 'frequency.' Makes it easier to separate into other column below.
-# Same idea as for 'f' above but for the time domain change 'mean' to 'Mean' to maintain naming convention
-# change 'std' to 'StandardDeviation' to maintain naming convention
+ Pull out column names to clean them up and make easier to tidy
+ this removes parentheses
+ changes first dash to an underscore to differentiate breaks
+ changes leading 'f' to 'frequency.' Makes it easier to separate into other column below.
+ Same idea as for 'f' above but for the time domain change 'mean' to 'Mean' to maintain naming convention
+ change 'std' to 'StandardDeviation' to maintain naming convention
 
-# Replaced column names with new ones
+ Replaced column names with new ones
 
-##############################################################################
-# MAKE A TIDY DATA SET
-##############################################################################
-# load tidyr package for data manipulation
-# This moves from a wide set to a tall set 
-# There are now 6 variables
+****
+ MAKE A TIDY DATA SET
+****
+ load tidyr package for data manipulation
+ This moves from a wide set to a tall set 
+ There are now 6 variables
 
-#------------------------------------------------------------------------------
-# First step to tidy data done
-#------------------------------------------------------------------------------
-# Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        494352 obs. of  6 variables:
-# $ Subject        : int  1 1 1 1 1 1 1 1 1 1 ...
-# $ Activity       : int  5 5 5 5 5 5 5 5 5 5 ...
-# $ ActivityLabel  : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
-# $ ObservationID          : int  1 2 3 4 5 6 7 8 9 10 ...
-# $ MeasurementType: Factor w/ 48 levels "time.BodyAcc_Mean-X",..: 1 1 1 1 ...
-# $ Measurement    : num  0.289 0.278 0.28 0.279 0.277 ...
-#------------------------------------------------------------------------------
-# Next separate and add 'Axis' (X, Y, and Z) column
-# Next separate and add MeasurementType (Mean|StandardDeviation) column
-# Next separate and add Domain column for time|frequency
-# And finally a spread to add Mean and StandardDeviation columns for each time entry. This decreases the rows by half.
+****-----
+ First step to tidy data done
+****-----
+ Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        494352 obs. of  6 variables:
+ $ Subject        : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ Activity       : int  5 5 5 5 5 5 5 5 5 5 ...
+ $ ActivityLabel  : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
+ $ ObservationID          : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ MeasurementType: Factor w/ 48 levels "time.BodyAcc_Mean-X",..: 1 1 1 1 ...
+ $ Measurement    : num  0.289 0.278 0.28 0.279 0.277 ...
+****-----
+ Next separate and add 'Axis' (X, Y, and Z) column
+ Next separate and add MeasurementType (Mean|StandardDeviation) column
+ Next separate and add Domain column for time|frequency
+ And finally a spread to add Mean and StandardDeviation columns for each time entry. This decreases the rows by half.
 
-##############################################################################
-# Final Raw Data Structure for tidy triaxial table
-##############################################################################
-# Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        247176 obs. of  9 variables:
-# $ Subject          : int  1 1 1 1 1 1 1 1 1 1 ...
-# $ Activity         : int  5 5 5 5 5 5 5 5 5 5 ...
-# $ ActivityLabel    : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
-# $ ObservationID    : int  1 1 1 1 1 1 1 1 1 1 ...
-# $ Domain           : chr  "frequency" "frequency" "frequency" "frequency" ...
-# $ Description      : chr  "BodyAcc" "BodyAcc" "BodyAcc" "BodyAccJerk" ...
-# $ Axis             : chr  "X" "Y" "Z" "X" ...
-# $ Mean             : num  -0.995 -0.983 -0.939 -0.992 -0.987 ...
-# $ StandardDeviation: num  -0.995 -0.983 -0.906 -0.996 -0.991 ...
+****
+ Final Raw Data Structure for tidy triaxial table
+****
+ Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        247176 obs. of  9 variables:
+ $ Subject          : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ Activity         : int  5 5 5 5 5 5 5 5 5 5 ...
+ $ ActivityLabel    : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
+ $ ObservationID    : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ Domain           : chr  "frequency" "frequency" "frequency" "frequency" ...
+ $ Description      : chr  "BodyAcc" "BodyAcc" "BodyAcc" "BodyAccJerk" ...
+ $ Axis             : chr  "X" "Y" "Z" "X" ...
+ $ Mean             : num  -0.995 -0.983 -0.939 -0.992 -0.987 ...
+ $ StandardDeviation: num  -0.995 -0.983 -0.906 -0.996 -0.991 ...
 
-##############################################################################
-# 5. FROM DATA SET ABOVE, CREATE SECOND, INDEPENDENT TIDY DATA SET 
-# with the average of each variable for each activity and each subject.
-##############################################################################
+****
+ 5. FROM DATA SET ABOVE, CREATE SECOND, INDEPENDENT TIDY DATA SET 
+ with the average of each variable for each activity and each subject.
+****
