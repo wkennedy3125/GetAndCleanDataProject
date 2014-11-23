@@ -1,6 +1,8 @@
 Code Book for Getting and Cleaning Data Project
 ====================
 
+## Cleaned and arranged raw data file variables (9 variables)
+(Summary table list is below)
 
 ### Subject
 * __length__: 2
@@ -89,5 +91,79 @@ Code Book for Getting and Cleaning Data Project
 * __type__: numeric
 * __values__: -x.xxxxxxx - x.xxxxxxx
 * __description__: The standard deviation of each measurement observation
+
+****
+
+## Summary table list of variables (7 variables)
+
+### Subject
+* __length__: 2
+* __type__: integer
+* __values__: 1 - 30
+* __description__: Identification of measurement taker
+
+**** 
+
+### ActivityLabel
+* __length__: 18
+* __type__: factor / 6 levels
+* __values__:
+
+   * WALKING
+   * WALKING_UPSTAIRS
+   * WALKING_DOWNSTAIRS
+   * SITTING
+   * STANDING
+   * LAYING
+
+* __description__: The names for the activities mapping to the activity (numbers)
+
+****
+
+### Description
+* __length__: 20
+* __type__: character
+* __values__:
+   * BodyAcc : Body Acceleration
+   * BodyAccJerk : Body Acceleration Jerk
+   * BodyGyro : Body Gyroscopic
+   * BodyGyroJerk : Body Gyroscopic Jerk
+   * GravityAcc : Gravity Acceleration
+* __description__: Description of type of signal measured
+
+****
+
+### Axis
+* __length__: 1
+* __type__: character
+* __values__: 
+   * X
+   * Y
+   * Z
+* __description__: Indicates the axis of measurement
+
+****
+
+### Count
+* __length__: 3
+* __type__: integer
+* __values__: 1 - 999
+* __description__: Number of summarized observations
+
+****
+
+### AverageMean
+* __length__: 10
+* __type__: numeric
+* __values__: -x.xxxxxxx - x.xxxxxxx
+* __description__: The mean of means of all measurement observations
+
+****
+
+### AverageStandardDeviation
+* __length__: 10
+* __type__: numeric
+* __values__: -x.xxxxxxx - x.xxxxxxx
+* __description__: The mean standard deviation of all measurement observations
 
 ****
