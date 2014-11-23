@@ -193,3 +193,27 @@ A README.txt file (not the one in this repository) with further details is inclu
 * __description__: The mean standard deviation of all measurement observations
 
 ****
+
+****
+
+### APPENDIX 1
+
+****
+
+__Variable Transformation__
+
+The variables in the original raw data sets look like:  
+* tBodyAcc-mean()-Z
+* fBodyAcc-std()-X
+* etc.
+
+Information is contained within the variable name  
+* time vs. frequency domain
+* signal description (e.g., Body Acceleration, Body Jerk)
+* measurement type (mean | std)
+* axis (X, Y, or Z)
+
+This way of organizing the variables yields a wide dataset and does not conform to the “tidy data” principles proposed by Hadley Wickham  
+(http://vita.had.co.nz/papers/tidy-data.pdf)  
+
+   The R packages, dplyr and tidyr, were used to transform these variables to the above narrow data structure.
