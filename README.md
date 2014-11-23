@@ -25,35 +25,43 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 ### run_analysis.R 
 
 __Brief Summary__
+
+****
+
 * Merges the training and the test sets to create one data set.
 * Extracts only the measurements on the mean and standard deviation for each measurement. 
 * Uses descriptive activity names to name the activities in the data set.
 * Appropriately labels the data set with descriptive variable names. 
 * From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+****
+
 __Code Detail__
 
+****
 
 Step 0. IMPORT RAW FILES
 
-   The following files will be imported and arranged to form a single large data set: 
+****
+
+The following files will be imported and arranged to form a single large data set: 
       - features.txt - this will be your column names
       - X_train.txt and y_train.txt - this is the training data and activity codes respectively.
       - X_test.txt and y_test.txt - same as above but for test data
       - subject_train.txt and subject_test.txt - these are the subject IDs
       - activity_labels.txt - mapping between acitivty codes and activity labels (names)
 
+****
 
-      * Import variable names - features.txt
-         * This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and descriptives below in this script. We'll put them in to select a subset before changing them.
-
+Import variable names - features.txt
+This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and descriptives below in this script. We'll put them in to select a subset before changing them.
 
 ****
-Import training sets - X_train.txt and y_train.txt
-                        X contains the measured value
-                        y contains the activity code (mapped to activity 
-                          labels/names below in this script)
-****
+
+Import training sets - 
+* X_train.txt and y_train.txt
+* X contains the measured value
+* y contains the activity code (mapped to activity labels/names below in this script)
 
 ****
  Import test sets - descriptions same as X and y above
@@ -147,33 +155,33 @@ Import training sets - X_train.txt and y_train.txt
 ****
  First step to tidy data done
 ****
- Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        494352 obs. of  6 variables:
- $ Subject        : int  1 1 1 1 1 1 1 1 1 1 ...
- $ Activity       : int  5 5 5 5 5 5 5 5 5 5 ...
- $ ActivityLabel  : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
- $ ObservationID          : int  1 2 3 4 5 6 7 8 9 10 ...
- $ MeasurementType: Factor w/ 48 levels "time.BodyAcc_Mean-X",..: 1 1 1 1 ...
- $ Measurement    : num  0.289 0.278 0.28 0.279 0.277 ...
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        494352 obs. of  6 variables:
+ - Subject        : int  1 1 1 1 1 1 1 1 1 1 ...
+ - Activity       : int  5 5 5 5 5 5 5 5 5 5 ...
+ - ActivityLabel  : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
+ - ObservationID          : int  1 2 3 4 5 6 7 8 9 10 ...
+ - MeasurementType: Factor w/ 48 levels "time.BodyAcc_Mean-X",..: 1 1 1 1 ...
+ - Measurement    : num  0.289 0.278 0.28 0.279 0.277 ...
 ****
- Next 
-      * separate and add 'Axis' (X, Y, and Z) column
-      * separate and add MeasurementType (Mean|StandardDeviation) column
-      * separate and add Domain column for time|frequency
-      * And finally a spread to add Mean and StandardDeviation columns for each time entry. This decreases the rows by half.
+Next 
+* separate and add 'Axis' (X, Y, and Z) column
+* separate and add MeasurementType (Mean|StandardDeviation) column
+* separate and add Domain column for time|frequency
+* And finally a spread to add Mean and StandardDeviation columns for each time entry. This decreases the rows by half.
 
 ****
  Final Raw Data Structure for tidy triaxial table
 ****
  Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        247176 obs. of  9 variables:
- $ Subject          : int  1 1 1 1 1 1 1 1 1 1 ...
- $ Activity         : int  5 5 5 5 5 5 5 5 5 5 ...
- $ ActivityLabel    : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
- $ ObservationID    : int  1 1 1 1 1 1 1 1 1 1 ...
- $ Domain           : chr  "frequency" "frequency" "frequency" "frequency" ...
- $ Description      : chr  "BodyAcc" "BodyAcc" "BodyAcc" "BodyAccJerk" ...
- $ Axis             : chr  "X" "Y" "Z" "X" ...
- $ Mean             : num  -0.995 -0.983 -0.939 -0.992 -0.987 ...
- $ StandardDeviation: num  -0.995 -0.983 -0.906 -0.996 -0.991 ...
+ - Subject          : int  1 1 1 1 1 1 1 1 1 1 ...
+ - Activity         : int  5 5 5 5 5 5 5 5 5 5 ...
+ - ActivityLabel    : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
+ - ObservationID    : int  1 1 1 1 1 1 1 1 1 1 ...
+ - Domain           : chr  "frequency" "frequency" "frequency" "frequency" ...
+ - Description      : chr  "BodyAcc" "BodyAcc" "BodyAcc" "BodyAccJerk" ...
+ - Axis             : chr  "X" "Y" "Z" "X" ...
+ - Mean             : num  -0.995 -0.983 -0.939 -0.992 -0.987 ...
+ - StandardDeviation: num  -0.995 -0.983 -0.906 -0.996 -0.991 ...
 
 ****
  5. FROM DATA SET ABOVE, CREATE SECOND, INDEPENDENT TIDY DATA SET 
