@@ -2,6 +2,7 @@ Code Book for Getting and Cleaning Data Project
 ====================
 
 This codebook lists two sets of dataset variables:
+
 1. A narrowly structured raw data set with 9 variables [247176 X 9]
 2. A narrowly structured summary data set with 7 variables [2700 X 7]
 
