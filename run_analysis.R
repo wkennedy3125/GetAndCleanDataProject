@@ -305,7 +305,7 @@ tbl_meansSd <- tbl_meansSd %>%  # FINAL TIDY DATA SET OF RAW SCORES
 # Medium size. Will use Medium 2 below. 
 
 #tbl_grouped <- tbl_meansSd %>%
-        group_by(Subject, ActivityLabel, Description)
+#        group_by(Subject, ActivityLabel, Description)
 
 # Summarize data
 #tbl_summary <- summarize(tbl_grouped,
