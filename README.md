@@ -74,27 +74,16 @@ Import training sets -
 ****
  Step 1. MERGE THE TRAINING AND TEST SETS to create one data set.
 ****
-      * Step 1. row bind (stack) the x (measurements) data sets
-****
+* \1. row bind (stack) the x (measurements) data sets
 
-****
  Step 2. Add column names/headers
-****
 
-****
  Step 3. Row bind (stack) subject sets and set column name
-****
 
-****
  Step 4. (Add) Column bind Subject to fulldata
-****
 
-****
- Step 5. Row bind (stack) y sets and set variable name
-****
-
-****
- Step 6. Add y sets to fulldata 
+* Row bind (stack) y sets and set variable name
+* Add y sets to fulldata 
 ****
 
 ****
