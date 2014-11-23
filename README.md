@@ -139,13 +139,13 @@ Use the dplyr `select()` function
 
 ****
 
-Pull out column names to clean them up and make easier to tidy.
+Pull out column names to clean them up and make it easier to manage.
 
 The variables currently look like:
 * tBodyAcc-mean()-Z
 * tBodyAcc-std()-X
 
-1. Remove parentheses
+1. Remove parentheses 
 2. Change first dash to an underscore to differentiate breaks
 3. Change leading 'f' to 'frequency.' Makes it easier to separate into other column below.
 4. Change leading ’t’ to ‘time’ 
@@ -160,8 +160,8 @@ The variables currently look like:
 ****
 
 * load tidyr package for data manipulation
-* This moves from a wide set to a tall set 
-* There are now 6 variables (See CodeBook.md)
+* Use the `gather()` function to move from a wide set to a tall set 
+* There are now 6 variables
 
 ****
 
@@ -180,14 +180,15 @@ Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        494352 obs. of  6 varia
 ****
 
 Next 
-* separate and add 'Axis' (X, Y, and Z) column
-* separate and add MeasurementType (Mean|StandardDeviation) column
-* separate and add Domain column for time|frequency
-* And finally a spread to add Mean and StandardDeviation columns for each time entry. This decreases the rows by half.
+* `separate()` and add 'Axis' (X, Y, and Z) column
+* `separate()` and add MeasurementType (Mean|StandardDeviation) column
+* `separate()` and add Domain column for time|frequency
+* And finally a `spread()` to add Mean and StandardDeviation columns for each time entry. 
+   * This decreases the rows by half.
 
 ****
 
- Final Raw Data Structure for tidy triaxial table
+ Final Raw Data Structure for tidy triaxial table (See CodeBook.md)
 
 ****
 
