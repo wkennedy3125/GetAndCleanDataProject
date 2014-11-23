@@ -45,8 +45,8 @@ __Code Detail__
 
 ****
 
-   * Import variable names - features.txt
-      * This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and decriptives below in this script. We'll put them in to select a subset before changing them.
+      * Import variable names - features.txt
+         * This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and decriptives below in this script. We'll put them in to select a subset before changing them.
 
 ****
 
