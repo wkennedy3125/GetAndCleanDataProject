@@ -1,6 +1,21 @@
 Code Book for Getting and Cleaning Data Project
 ====================
 
+This codebook lists two sets of dataset variables:
+1. A narrowly structured raw data set with 9 variables [247176 X 9]
+2. A narrowly structured summary data set with 7 variables [2700 X 7]
+
+These sets are based on the raw data available from:
+UCI Machine Learning Repository
+Center for Machine Learning and Intelligent Systems
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+When arranged these data are a wide formatted set with 561 variables [10299 X 561]
+
+The variable transformations are shown in Appendix 1 (below)
+
+****
+
 ## Cleaned and arranged raw data file variables (9 variables)
 (Summary table list is below)
 
