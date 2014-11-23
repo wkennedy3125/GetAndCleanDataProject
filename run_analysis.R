@@ -12,12 +12,11 @@
 #                   type distinction (if thought necessary): 
 #                                       underscore and lower humpback
 #                                       e.g., for data table - tbl_meansSd
-#                                             for data frame - df_meansSd
 ##############################################################################
-# Set working directory as needed. Your scripts and data files go in this 
-# directory
+# Set working directory as needed. The data files go in the 
+# directory you set
 getwd()
-#setwd("/Users/adakemia/Documents/Academic/Coursera/DataScienceSpecialization/03GettingAndCleaningData/Project/GetAndCleanDataProject")
+
 
 ##############################################################################
 # 0. IMPORT RAW FILES
@@ -41,7 +40,7 @@ getwd()
 #                         below in this script. We'll put them in to select a
 #                         subset before changing them.
 #-------------------------------------------------------------------------
-varNames <- read.table("../UCI HAR Dataset/features.txt", header=FALSE, 
+varNames <- read.table("./features.txt", header=FALSE, 
                        colClasses="character", row.names = NULL)
 dim(varNames) # [1] 561   2 (contains row number as first column, will get 
 str(varNames)                           #rid later)
@@ -53,24 +52,24 @@ head(varNames)
 #                        y contains the activity code (mapped to activity 
 #                          labels/names below in this script)
 #-------------------------------------------------------------------------
-xTrain <- read.table("../UCI HAR Dataset/train/X_train.txt", header=FALSE)
+xTrain <- read.table("./X_train.txt", header=FALSE)
 dim(xTrain) # [1] 7352  561
-yTrain <- read.table("../UCI HAR Dataset/train/y_train.txt", header=FALSE)
+yTrain <- read.table("./y_train.txt", header=FALSE)
 dim(yTrain) # [1] 7352  1
 
 # Import test sets - descriptions same as X and y above
 #-------------------------------------------------------------------------
-xTest <- read.table("../UCI HAR Dataset/test/X_test.txt", header=FALSE)
+xTest <- read.table("./X_test.txt", header=FALSE)
 dim(xTest) # [1] 2947  561
-yTest <- read.table("../UCI HAR Dataset/test/y_test.txt", header=FALSE)
+yTest <- read.table("./y_test.txt", header=FALSE)
 dim(yTest) # [1] 2947  1
 
 # Import subject sets - a one column table to map subject ID
 #-------------------------------------------------------------------------
-subjectTrain <- read.table("../UCI HAR Dataset/train/subject_train.txt", 
+subjectTrain <- read.table("./subject_train.txt", 
                            header=FALSE)
 dim(subjectTrain) # [1] 7352    1
-subjectTest <- read.table("../UCI HAR Dataset/test/subject_test.txt", 
+subjectTest <- read.table("./subject_test.txt", 
                           header=FALSE)
 dim(subjectTest) # [1] 2947    1
 
@@ -148,9 +147,9 @@ colSums(is.na(tbl_meansSd)) # no missing (NA) values
 ##############################################################################
 # Read in activity_labels.txt: a list of six activity labels
 # Add headers to match on "Activity" in the full data set
-# Left join the tables to fill in the activity labels
+# Left join the tables to fill in the activity labels (dplyr package)
 #-----------------------------------------------------------------------------
-activityLabels <- read.table("../UCI HAR Dataset/activity_labels.txt", 
+activityLabels <- read.table("./activity_labels.txt", 
                              header=FALSE)
 # Add the column names so "Activity" will match "Acitivty" in the main data set
 # "Activity" will be the key value
@@ -176,10 +175,10 @@ tbl_meansSd %>%
 #-----------------------------------------------------------------------------
 
 tbl_meansSd # check data again
-# Add a trial number column to uniquely group each row (time entry) of 
-# data before gathering/melting the data to fit tidy standards
+# Add an observation id number column to uniquely group each row (time entry)  
+# of data before gathering/melting the data to fit tidy standards
 # http://vita.had.co.nz/papers/tidy-data.pdf
-tbl_meansSd$Trial <- 1:nrow(tbl_meansSd)
+tbl_meansSd$ObservationID <- 1:nrow(tbl_meansSd)
 dim(tbl_meansSd) # [1] 10299    52
 
 # Pull out column names to clean them up and make easier to tidy
@@ -207,7 +206,7 @@ tbl_meansSd # Another look
 library(tidyr) # load tidyr package for data manipulation
 
 tbl_meansSd <- tbl_meansSd %>%      # This moves from a wide set to a tall set
-        gather(MeasurementType, Measurement, -(Subject:Trial))
+        gather(MeasurementType, Measurement, -(Subject:ObservationID))
 # There are now 6 variables
 dim(tbl_meansSd) # [1] 494352      6
 str(tbl_meansSd)
@@ -218,7 +217,7 @@ str(tbl_meansSd)
 # $ Subject        : int  1 1 1 1 1 1 1 1 1 1 ...
 # $ Activity       : int  5 5 5 5 5 5 5 5 5 5 ...
 # $ ActivityLabel  : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
-# $ Trial          : int  1 2 3 4 5 6 7 8 9 10 ...
+# $ ObservationID          : int  1 2 3 4 5 6 7 8 9 10 ...
 # $ MeasurementType: Factor w/ 48 levels "time.BodyAcc_Mean-X",..: 1 1 1 1 ...
 # $ Measurement    : num  0.289 0.278 0.28 0.279 0.277 ...
 #------------------------------------------------------------------------------
@@ -238,18 +237,18 @@ tbl_meansSd <- tbl_meansSd %>% # Adds Domain column for time and frequency
 # each time entry. This decreases the rows by half.
 tbl_meansSd <- tbl_meansSd %>%  # FINAL TIDY DATA SET OF RAW SCORES
         spread(MeasurementType, Measurement) %>%
-        arrange(Subject, Trial, Domain, Description)
+        arrange(Subject, ObservationID, Domain, Description)
 
-dim(tbl_meansSd)
+dim(tbl_meansSd) # [1] 247176      9
 str(tbl_meansSd)
 ##############################################################################
-# Final Raw Data Structure
+# Final Raw Data Structure for tidy triaxial table
 ##############################################################################
 # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':        247176 obs. of  9 variables:
-#         $ Subject          : int  1 1 1 1 1 1 1 1 1 1 ...
+# $ Subject          : int  1 1 1 1 1 1 1 1 1 1 ...
 # $ Activity         : int  5 5 5 5 5 5 5 5 5 5 ...
 # $ ActivityLabel    : Factor w/ 6 levels "LAYING","SITTING",..: 3 3 3 3 3 3 ...
-# $ Trial            : int  1 1 1 1 1 1 1 1 1 1 ...
+# $ ObservationID    : int  1 1 1 1 1 1 1 1 1 1 ...
 # $ Domain           : chr  "frequency" "frequency" "frequency" "frequency" ...
 # $ Description      : chr  "BodyAcc" "BodyAcc" "BodyAcc" "BodyAccJerk" ...
 # $ Axis             : chr  "X" "Y" "Z" "X" ...
@@ -260,17 +259,57 @@ str(tbl_meansSd)
 # 5. FROM DATA SET ABOVE, CREATE SECOND, INDEPENDENT TIDY DATA SET 
 # with the average of each variable for each activity and each subject.
 ##############################################################################
+# With the data arrange in a tidy set above, arranging and summarizing is
+# quite flexible. I've given three options (of many) below. 
 
+# Medium size. Will use Medium 2 below. 
 
-# Group the data meaningfully
 tbl_grouped <- tbl_meansSd %>%
-        group_by(Subject, ActivityLabel, Domain, Description, Axis)
+        group_by(Subject, ActivityLabel, Description)
 
 # Summarize data
 tbl_summary <- summarize(tbl_grouped,
+                          Count = n(),
+                          AverageMean = mean(Mean),
+                          AverageStandardDeviation = mean(StandardDeviation))
+dim(tbl_summary) # [1] 900   6
+write.table(tbl_summary, file = "./tidy_summary.txt", row.name = FALSE)
+
+# Medium 2. Keep axes separate. Actually this looks better. Will use this one.
+tbl_grouped0 <- tbl_meansSd %>%
+        group_by(Subject, ActivityLabel, Description, Axis)
+
+# Summarize data
+tbl_summary0 <- summarize(tbl_grouped0,
                          Count = n(),
                          AverageMean = mean(Mean),
                          AverageStandardDeviation = mean(StandardDeviation))
+dim(tbl_summary0) # [1] 2700   7
+write.table(tbl_summary0, file = "./tidy_summary0.txt", row.name = FALSE)
 
-write.table(tbl_summary, file = "../tidy_summary.txt", row.name = FALSE)
+# Large size. Group the data meaningfully. This one is large, but perhaps best.
+tbl_grouped3 <- tbl_meansSd %>%
+        group_by(Subject, ActivityLabel, Domain, Description, Axis)
+
+# Summarize data
+tbl_summary3 <- summarize(tbl_grouped3,
+                         Count = n(),
+                         AverageMean = mean(Mean),
+                         AverageStandardDeviation = mean(StandardDeviation))
+dim(tbl_summary3) # [1] 4320    8
+write.table(tbl_summary3, file = "./tidy_summary3.txt", row.name = FALSE)
+
+# A much smaller summary
+# I doubt this is meaningful data.
+
+tbl_grouped2 <- tbl_meansSd %>%
+        group_by(Subject, ActivityLabel)
+
+# Summarize data
+tbl_summary2 <- summarize(tbl_grouped2,
+                         Count = n(),
+                         AverageMean = mean(Mean),
+                         AverageStandardDeviation = mean(StandardDeviation))
+dim(tbl_summary2) # [1] 180   5
+write.table(tbl_summary2, file = "./tidy_summary2.txt", row.name = FALSE)
 
