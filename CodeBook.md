@@ -5,7 +5,7 @@ Code Book for Getting and Cleaning Data Project
 ### Subject
 * __length__: 2
 * __type__: integer
-* __values__: 1-30
+* __values__: 1 - 30
 * __description__: Identification of measurement taker
 
 **** 
@@ -13,7 +13,7 @@ Code Book for Getting and Cleaning Data Project
 ### Activity
 * __length__: 1
 * __type__: integer
-* __values__: 1-6
+* __values__: 1 - 6
 * __description__: Activity code. A value from one to six specifying the activity
 
 ****
@@ -45,8 +45,10 @@ Code Book for Getting and Cleaning Data Project
 ### Domain
 * __length__: 9
 * __type__: character
-* __values__: “time” | “frequency”
-* __description__:
+* __values__: 
+   * time
+   * frequency
+* __description__: These indicate the time or frequency domain of the measurement.
 
 ****
 
@@ -54,13 +56,38 @@ Code Book for Getting and Cleaning Data Project
 * __length__: 20
 * __type__: character
 * __values__:
-> BodyAcc : Body Acceleration
-> BodyAccJerk : Body Acceleration Jerk
-> BodyGyro : Body Gyroscopic
-> BodyGyroJerk : Body Gyroscopic Jerk
-> GravityAcc : Gravity Acceleration
+   * BodyAcc : Body Acceleration
+   * BodyAccJerk : Body Acceleration Jerk
+   * BodyGyro : Body Gyroscopic
+   * BodyGyroJerk : Body Gyroscopic Jerk
+   * GravityAcc : Gravity Acceleration
 * __description__: Description of type of signal measured.
 
 ****
 
+### Axis
+* __length__: 1
+* __type__: character
+* __values__: 
+   * X
+   * Y
+   * Z
+* __description__: Indicates the axis of measurement.
 
+****
+
+### Mean
+* __length__: 10
+* __type__: numeric
+* __values__: -x.xxxxxxx - x.xxxxxxx
+* __description__: The mean of each measurement observation.
+
+****
+
+### StandardDeviation
+* __length__: 10
+* __type__: numeric
+* __values__: -x.xxxxxxx - x.xxxxxxx
+* __description__: The standard deviation of each measurement observation.
+
+****
