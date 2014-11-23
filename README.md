@@ -37,12 +37,12 @@ __Code Detail__
 * IMPORT RAW FILES
 ****
    The following files will be imported and arranged to form a single large data set: 
-      1. features.txt - this will be your column names
-      2. X_train.txt and y_train.txt - this is the training data and activity codes respectively.
-      3. X_test.txt and y_test.txt - same as above but for test data
-      4. subject_train.txt and subject_test.txt - these are the subject IDs
-      5. activity_labels.txt - mapping between acitivty codes and activity labels (names)
-
+      - features.txt - this will be your column names
+      - X_train.txt and y_train.txt - this is the training data and activity codes respectively.
+      - X_test.txt and y_test.txt - same as above but for test data
+      - subject_train.txt and subject_test.txt - these are the subject IDs
+      - activity_labels.txt - mapping between acitivty codes and activity labels (names)
+****
    * Import variable names - features.txt
       * This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and decriptives below in this script. We'll put them in to select a subset before changing them.
 
