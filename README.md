@@ -42,7 +42,9 @@ __Code Detail__
       - X_test.txt and y_test.txt - same as above but for test data
       - subject_train.txt and subject_test.txt - these are the subject IDs
       - activity_labels.txt - mapping between acitivty codes and activity labels (names)
+
 ****
+
    * Import variable names - features.txt
       * This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and decriptives below in this script. We'll put them in to select a subset before changing them.
 
