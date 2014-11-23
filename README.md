@@ -45,15 +45,17 @@ Step 0. IMPORT RAW FILES
 ****
 
 The following files will be imported and arranged to form a single large data set: 
-      - features.txt - this will be your column names
-      - X_train.txt and y_train.txt - this is the training data and activity codes respectively.
-      - X_test.txt and y_test.txt - same as above but for test data
-      - subject_train.txt and subject_test.txt - these are the subject IDs
-      - activity_labels.txt - mapping between acitivty codes and activity labels (names)
+- features.txt - this will be your column names
+- X_train.txt and y_train.txt - this is the training data and activity codes respectively.
+- X_test.txt and y_test.txt - same as above but for test data
+- subject_train.txt and subject_test.txt - these are the subject IDs
+- activity_labels.txt - mapping between acitivty codes and activity labels (names)
 
 ****
 
-Import variable names - features.txt
+Import variable names - 
+* features.txt
+
 This file contains a single column to be inserted horizontally as column names to the consolidated dataframe/table. The column/variable names will be changed to more appropriate formats and descriptives below in this script. We'll put them in to select a subset before changing them.
 
 ****
@@ -64,17 +66,21 @@ Import training sets -
    * y contains the activity code (mapped to activity labels/names below in this script)
 
 ****
+
 Import test sets - descriptions same as X and y above
 * X_test.txt and y_test.txt
+
 ****
 
 Import subject sets - a one column table to map subject ID
 * subject.txt
 
+****
+
+ Step 1. MERGE THE TRAINING AND TEST SETS to create one data set.
 
 ****
- Step 1. MERGE THE TRAINING AND TEST SETS to create one data set.
-****
+
 * Row bind (stack) the x (measurements) data sets
 * Add column names/headers
 * Row bind (stack) subject sets and set column name
@@ -83,18 +89,23 @@ Import subject sets - a one column table to map subject ID
 * Add y sets to fulldata 
 
 ****
+
  To make things easier, use the dplyr package for 
  cleaning and tidying the rest
+
 ****
+
 Cleanup Global Environment (only tbl_data[] will be active)
 
 ****
+
  Step 2. EXTRACT ONLY MEASUREMENTS on the MEAN and STANDARD DEVIATION for 
  each measurement. Only taking the triaxial data for this table.
  The magnitude values can be summarized elsewhere and added in the summary
  table.
 
 ****
+
  Step 3. USE DESCRIPTIVE ACTIVITY NAMES to name the activities in the data set.
 ****
  Read in activity_labels.txt: a list of six activity labels
