@@ -38,7 +38,7 @@ Code Book for Getting and Cleaning Data Project
 * __length__: 5
 * __type__: integer
 * __values__: 1 - [the number of rows in the raw data set] > 10,000
-* __description__: A unique identifier for each observational row in the original data.
+* __description__: A unique identifier for each observational row in the original data
 
 ****
 
@@ -48,7 +48,7 @@ Code Book for Getting and Cleaning Data Project
 * __values__: 
    * time
    * frequency
-* __description__: These indicate the time or frequency domain of the measurement.
+* __description__: These indicate the time or frequency domain of the measurement
 
 ****
 
@@ -61,7 +61,7 @@ Code Book for Getting and Cleaning Data Project
    * BodyGyro : Body Gyroscopic
    * BodyGyroJerk : Body Gyroscopic Jerk
    * GravityAcc : Gravity Acceleration
-* __description__: Description of type of signal measured.
+* __description__: Description of type of signal measured
 
 ****
 
@@ -72,7 +72,7 @@ Code Book for Getting and Cleaning Data Project
    * X
    * Y
    * Z
-* __description__: Indicates the axis of measurement.
+* __description__: Indicates the axis of measurement
 
 ****
 
@@ -80,7 +80,7 @@ Code Book for Getting and Cleaning Data Project
 * __length__: 10
 * __type__: numeric
 * __values__: -x.xxxxxxx - x.xxxxxxx
-* __description__: The mean of each measurement observation.
+* __description__: The mean of each measurement observation
 
 ****
 
@@ -88,6 +88,6 @@ Code Book for Getting and Cleaning Data Project
 * __length__: 10
 * __type__: numeric
 * __values__: -x.xxxxxxx - x.xxxxxxx
-* __description__: The standard deviation of each measurement observation.
+* __description__: The standard deviation of each measurement observation
 
 ****
