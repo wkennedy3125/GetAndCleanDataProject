@@ -132,18 +132,24 @@ The magnitude values can be summarized elsewhere and added in the summary table.
 
  Add an observation id number column to uniquely group each row (time entry)  
  of data before gathering/melting the data to fit tidy standards
+
  http://vita.had.co.nz/papers/tidy-data.pdf
 
 ****
 
- Pull out column names to clean them up and make easier to tidy. 
- This removes parentheses
- changes first dash to an underscore to differentiate breaks
- changes leading 'f' to 'frequency.' Makes it easier to separate into other column below.
- Same idea as for 'f' above but for the time domain change 'mean' to 'Mean' to maintain naming convention
- change 'std' to 'StandardDeviation' to maintain naming convention
+Pull out column names to clean them up and make easier to tidy.
 
- Replaced column names with new ones
+The variables currently look like:
+* tBodyAcc-mean()-Z
+* tBodyAcc-std()-X
+
+1. Remove parentheses
+2. Change first dash to an underscore to differentiate breaks
+3. Change leading 'f' to 'frequency.' Makes it easier to separate into other column below.
+4. Change leading ’t’ to ‘time’ 
+5. Change 'mean' to 'Mean' to maintain naming convention
+6. Change 'std' to 'StandardDeviation' to maintain naming convention
+7. Replace column names with new ones
 
 ****
 
